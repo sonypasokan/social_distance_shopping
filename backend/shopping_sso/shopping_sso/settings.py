@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import rest_framework
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +57,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'shopping_sso.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+    ),
+}
 
 TEMPLATES = [
     {
@@ -99,6 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+JWT_AUTH = {
+    # 'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
