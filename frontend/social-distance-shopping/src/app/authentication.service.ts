@@ -27,8 +27,13 @@ export class AuthenticationService {
                 this.authenticationSubject.next("Logged in successfully");
             },
             error => {
-                console.log(error.error["non_field_errors"][0]);
-                this.authenticationSubject.next(error.error["non_field_errors"][0]);
+                // the action inside if condition must be handled globally later
+                if (error.message.includes("Unknown Error")){
+                    this.authenticationSubject.next("Backend seems to be down. Please try again later!");
+                }
+                else{
+                    this.authenticationSubject.next(error.error["non_field_errors"][0]);
+                }
             }
             );
     }
