@@ -1,3 +1,5 @@
+<h2>Welcome to Social Distance Shopping app</h2>
+<h2>Please signin for help or get help!</h2>
 <div class="row" style="width: 300px;">
     <div class="col-xs-12">
         <form [formGroup]="loginForm"
@@ -22,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <p *ngIf="loginMessage">{{ loginMessage }}</p>
+            <p *ngIf="loginMessage" style="color: red;">{{ loginMessage }}</p>
             <br>
             <div class="row">
                 <div class="col-xs-12">
