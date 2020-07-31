@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { AppRouterModule } from './app-routing.module';
 import { AuthenticationService } from './authentication.service'
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
